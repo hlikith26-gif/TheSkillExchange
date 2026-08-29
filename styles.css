@@ -111,8 +111,8 @@ body {
 }
 .btn-outline {
   background: transparent;
-  color: var(--cream);
-  border: 1px solid rgba(245, 239, 224, 0.2);
+  color: var(--navy-dark);
+  border: 1px solid var(--cream);
   padding: 14px 28px;
   font-size: 11px;
   letter-spacing: 2px;
@@ -122,4 +122,47 @@ body {
 }
 .btn-outline:hover {
   border-color: var(--cream);
+}
+.belt {
+    width: 100%;
+    height: 50px;
+    background-color: var(--light-blue);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+h1 {
+    margin-left: 50px;
+    margin-bottom: 50px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    font-size: clamp(52px, 8vw, 100px);
+    font-family: 'Cormorant Garamond', serif;
+}
+.purpose {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1400px;
+    border-left: solid 1px white;
+    border-top: solid 1px white;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.purposesblue {
+    padding: 40px 48px;
+    border-top: solid 1px white;
+    border-right: solid 1px white;
+    background-color: var(--light-blue);
+}
+.purposespurple {
+    padding: 40px 48px;
+    border-top: solid 1px white;
+    border-right: solid 1px white;
+    background-color: var(--purple);
+}
+.purposesemoji {
+    font-weight: 500;
+    font-size: 48px;
+    margin-bottom: 10px;
 }
