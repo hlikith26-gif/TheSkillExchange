@@ -11,7 +11,13 @@
   --navy-deep: #16233B;
   --gold: #C9A86A;
 }
-
+@font-face {
+    font-family: "anton";
+    src: url(Anton-Regular.ttf) format("truetype");
+    font-weight: normal;
+    font-size: normal;
+    font-display: swap;
+}
 * {
   margin: 0;
   padding: 0;
@@ -41,10 +47,8 @@ body {
     
     radial-gradient(circle at 50% 50%, #00000000 20%, #030509CC 100%),
 
-    
     radial-gradient(ellipse 60% 50% at 35% 50%, #38BDF847 0%, #00000000 70%),
 
-    
     radial-gradient(ellipse 50% 40% at 75% 30%, #A855F726 0%, #00000000 60%),
 
     radial-gradient(ellipse 50% 40% at 30% 75%, #C9A86A4D 0%, #00000000 60%),
@@ -130,7 +134,7 @@ body {
     margin-top: 50px;
     margin-bottom: 50px;
 }
-h1 {
+.title {
     margin-left: 50px;
     margin-bottom: 50px;
     font-style: italic;
@@ -151,13 +155,13 @@ h1 {
 }
 .purposesblue {
     padding: 40px 48px;
-    border-top: solid 1px white;
+    border-bottom: solid 1px white;
     border-right: solid 1px white;
     background-color: var(--light-blue);
 }
 .purposespurple {
     padding: 40px 48px;
-    border-top: solid 1px white;
+    border-bottom: solid 1px white;
     border-right: solid 1px white;
     background-color: var(--purple);
 }
@@ -167,5 +171,13 @@ h1 {
     margin-bottom: 10px;
 }
 .message {
-  font-family: "Space Grotesk", sans-serif;
+    display: flex;
+    font-style: normal;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    margin-bottom: 25px;
 }
