@@ -1,21 +1,52 @@
-const client = new Appwrite.Account(client);
+const client = new Appwrite.Client();
+
 client
-.setEndpoint('https://cloud.appwrite.io/v1')
-.setProject('6a96e8210021e963d2ac')
+    .setEndpoint("https://fra.cloud.appwrite.io/v1")
+    .setProject("6a96e8210021e963d2ac");
+
 const account = new Appwrite.Account(client);
-async function signup() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('Email').value;
-    const password = document.getElementById('password').value;
+
+
+
+document.getElementById("signupForm").addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+
+    
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+
     try {
+
+        
         const user = await account.create({
-            userID: Appwrite.ID.Unique(),
+            userId: Appwrite.ID.unique(),
             email: email,
             password: password,
             name: name
-        })
-        alert('Account created');
+        });
+
+        console.log("User created:", user);
+
+        alert("Account created successfully! 🎉");
+
+        
+        window.location.href = "main.html";
+
     } catch (error) {
-        alert(error.message);
+
+        console.error(error);
+        alert("Error: " + error.message);
+
     }
-}
+
+});
