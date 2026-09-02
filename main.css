@@ -1,0 +1,88 @@
+:root {
+  --light-blue: #38BDF8;
+  --purple: #A855F7;
+  --navy-dark: #090D16;
+  --navy-mid: #121A2D;
+  --navy-light: #1E293B;
+  --obsidian: #030509;
+  --cream: #F5EFE0;
+  --smoke: #94A3B8;
+  --navy-deep: #16233B;
+  --gold: #C9A86A;
+}
+
+body {
+  background-color: var(--navy-dark);
+  color: var(--cream);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+.btn-primary {
+  background: var(--light-blue);
+  color: var(--navy-dark);
+  padding: 14px 28px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+.btn-outline {
+  background: transparent;
+  color: var(--navy-dark);
+  border: 1px solid var(--cream);
+  padding: 14px 28px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color 0.3s ease;
+}
+.btn-outline:hover {
+  border-color: var(--cream);
+}
+.container {
+  display: flex;
+  height: 100vh;
+}
+.sidebar {
+    flex-shrink: 0;
+    overflow-y: auto;
+    width: 250px;
+    background-color: var(--navy-light);
+    border: solid 1px white;
+    color: white;
+    padding: 20px;
+}
+.sidebar h2 {
+    margin-top: 0;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    color: #00bfff;
+}
+
+/* Main content */
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+    overflow-y: auto;
+}
