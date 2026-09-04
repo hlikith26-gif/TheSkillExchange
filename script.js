@@ -1,47 +1,96 @@
-const client = new Appwrite.Client();
+// ---- Supabase setup ----
+// Requires this in your HTML <head> or before this script:
+// <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-client
-    .setEndpoint("https://fra.cloud.appwrite.io/v1")
-    .setProject("6a96e8210021e963d2ac");
+const SUPABASE_URL = "https://YOUR_PROJECT_REF.supabase.co";
+const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
 
-const account = new Appwrite.Account(client);
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-document.getElementById("signupForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
+// ---- Sign Up ----
+const signupForm = document.getElementById("signupForm");
+if (signupForm) {
+    signupForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
 
-    console.log("Name:", name);
-    console.log("Email:", email);
+        if (!email) {
+            alert("Please enter an email!");
+            return;
+        }
 
-    if (!email) {
-        alert("Please enter an email!");
-        return;
-    }
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
 
-    if (password !== confirmPassword) {
-        alert("Passwords do not match!");
-        return;
-    }
-
-    try {
-        const user = await account.create({
-            userId: Appwrite.ID.unique(),
+        const { data, error } = await supabase.auth.signUp({
             email: email,
             password: password,
-            name: name
+            options: {
+                data: { name: name } // stored in user_metadata
+            }
         });
 
-        console.log("Created user:", user);
-        alert("Account created successfully!");
+        if (error) {
+            console.error(error);
+            alert(error.message);
+            return;
+        }
 
+        console.log("Created user:", data.user);
+        alert("Account created! Check your email to confirm your address.");
+
+        window.location.href = "login.html";
+    });
+}
+
+// ---- Sign In ----
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+    loginForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const email = document.getElementById("Email2").value.trim();
+        const password = document.getElementById("password2").value;
+
+        if (!email || !password) {
+            alert("Please enter your email and password!");
+            return;
+        }
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+        if (error) {
+            console.error(error);
+            alert(error.message);
+            return;
+        }
+
+        console.log("Logged in user:", data.user);
         window.location.href = "main.html";
+    });
+}
 
-    } catch (error) {
-        console.error(error);
-        alert(error.message);
-    }
-});
+// ---- Log Out ----
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", async function () {
+        const { error } = await supabase.auth.signOut();
+
+        if (error) {
+            console.error(error);
+            alert(error.message);
+            return;
+        }
+
+        window.location.href = "login.html";
+    });
+}
