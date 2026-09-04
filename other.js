@@ -34,3 +34,12 @@ function publish_show() {
 function close_publish() {
     publish_pop.close()
 }
+
+const media_subpop = document.getElementById("media_popup")
+
+function media_close () {
+    media_subpop.close()
+}
+function media_show() {
+    media_subpop.showModal()
+}

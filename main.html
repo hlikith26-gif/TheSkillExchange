@@ -27,21 +27,6 @@
             </form>
         </dialog>
 
-        <dialog id="publish-popup">
-            <div class="publishpopup">
-                <div class="publishpopuppurple" onclick="media_show()">
-                    <h1 class="publishpopuptitle">Upload Media</h1>
-                    <p>MP4, MKV, WebM, MP3, WAV</p>
-                </div>
-
-                <div class="publishpopupblue" onclick="others_show()">
-                    <h1 class="publishpopuptitle">Upload Others</h1>
-                    <p>PNG, JPEG, PDF, TXT</p>
-                </div>                
-            </div>
-            <button onclick="close_publish()" class="btn-outline" style="margin-top: 15px; text-align: center;">Close</button>
-        </dialog>
-
         <dialog id="media-popup">
             <h1>Upload Media</h1>
             <input type="file" accept=".mp4, .mp3, .mkv, .webm, wav">
@@ -56,7 +41,26 @@
                 <option value="others">Others</option>
             </select>
             <button>Publish</button>
+            <button onclick="publish_show()">Back</button>
+            <button onclick="media_close()">Close</button>
         </dialog>
+
+        <dialog id="publish-popup">
+            <div class="publishpopup">
+                <div class="publishpopuppurple">
+                    <h1 class="publishpopuptitle">Upload Media</h1>
+                    <p>MP4, MKV, WebM, MP3, WAV</p>
+                    <button onclick="media_show()" class="btn-outline">Upload Media</button>
+                </div>
+
+                <div class="publishpopupblue" onclick="others_show()">
+                    <h1 class="publishpopuptitle">Upload Others</h1>
+                    <p>PNG, JPEG, PDF, TXT</p>
+                </div>                
+            </div>
+            <button onclick="close_publish()" class="btn-outline" style="margin-top: 15px; text-align: center;">Close</button>
+        </dialog>
+
 
         <main id="main-content">
             <h1>Dashboard</h1>
