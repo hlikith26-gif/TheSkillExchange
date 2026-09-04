@@ -5,22 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="">
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <ul>
-                <a href="#"><li>Home</li></a>
-                <a href="#"><li>Learning Resources</li></a>
-                <a href="#"><li>Threads</li></a>
-                <a href="#"><li>Events</li></a>
-                <a href="#"><li>Feedback</li></a>
-            </ul>
-        </aside>
+    <aside class="sidebar">
+        <ul>
+            <li><a href="#" data-page="home">Home</a></li>
+            <li><a href="#" data-page="lr">Learning Resources</a></li>
+            <li><a href="#" data-page="threads">Threads</a></li>
+            <li><a href="#" data-page="events">Events</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+    </aside>
 
-        <main class="content">
+        <main id="main-content">
             <h1>Dashboard</h1>
         </main>
+        <template id="page-lr">
+            <h1>Learning Resources</h1>
+            <button class="btn-primary">Publish</button>
+        </template>
+        <template id="page-threads">
+            <h1>Threads</h1>
+        </template>
+        <template id="page-events">
+            <h1>Events</h1>
+        </template>
+        <template id="page-feedback">
+            <h1>Feedback</h1>
+        </template>
     </div>
+    <script src="other.js"></script>
 </body>
 </html>

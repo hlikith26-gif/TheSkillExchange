@@ -15,7 +15,20 @@ body {
   background-color: var(--navy-dark);
   color: var(--cream);
   font-family: 'Outfit', sans-serif;
-  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "sidebar main"
+  "sidebar footer";
+}
+aside {
+  grid-area: sidebar;
+}
+main {
+  grid-area: main;
+}
+footer {
+  grid-area: footer;
 }
 .btn-primary {
   background: var(--light-blue);
@@ -64,10 +77,15 @@ body {
 .sidebar ul {
     list-style: none;
     padding: 0;
+    
 }
 
 .sidebar ul li {
     margin: 15px 0;
+    transition: all 0.2s ease;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
 }
 
 .sidebar ul li a {
@@ -75,8 +93,14 @@ body {
     text-decoration: none;
 }
 
+.sidebar ul li:hover {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    transform: translateX(3px);
+
+}
 .sidebar ul li a:hover {
-    color: #00bfff;
+  color: #00bfff;
 }
 
 /* Main content */
