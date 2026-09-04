@@ -17,6 +17,9 @@ def randomize():
         "13":"others"
     }
 
+
+    Randomization=random.randint(1,13)
+
     
 
 
