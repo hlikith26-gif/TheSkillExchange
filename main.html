@@ -8,19 +8,89 @@
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <ul>
-                <a href="#"><li>Home</li></a>
-                <a href="#"><li>Learning Resources</li></a>
-                <a href="#"><li>Threads</li></a>
-                <a href="#"><li>Events</li></a>
-                <a href="#"><li>Feedback</li></a>
-            </ul>
-        </aside>
+    <aside class="sidebar">
+        <ul>
+            <a href="#" data-page="home"><li>Home</li></a>
+            <a href="#" data-page="lr"><li>Learning Resources</li></a>
+            <a href="#" data-page="threads"><li>Threads</li></a>
+            <a href="#" data-page="events"><li>Events</li></a>
+            <button class="btn-primary" onclick="feedback_show()">Feedback</button>
+        </ul>
+    </aside>
 
-        <main class="content">
+        <dialog id="feedback-popup" style="border-radius: 16px;">
+            <h1>Feedback</h1>
+            <form>
+                <input placeholder="Message" style="min-height: 100px;" type="file"><br>
+                <button class="btn-primary" style="margin-top: 25px; margin-right: 25px;">Submit</button>
+                <button class="button-outline" onclick="close_feedback()">Cancel</button>
+            </form>
+        </dialog>
+
+        <dialog id="media-popup">
+            <h1>Upload Media</h1>
+            <input type="file" accept=".mp4, .mp3, .mkv, .webm, wav">
+            <select id="genre">
+                <option value="mathematics">Mathematics</option>
+                <option value="science">Science</option>
+                <option value="sst">Social Studies</option>
+                <option value="cs">Computer Science</option>
+                <option value="law">Law</option>
+                <option value="fl">Financial Literacy</option>
+                <option value="languages">Languages</option>
+                <option value="others">Others</option>
+            </select>
+            <button>Publish</button>
+            <button onclick="publish_show()">Back</button>
+            <button onclick="media_close()">Close</button>
+        </dialog>
+
+        <dialog id="publish-popup">
+            <div class="publishpopup">
+                <div class="publishpopuppurple">
+                    <h1 class="publishpopuptitle">Upload Media</h1>
+                    <p>MP4, MKV, WebM, MP3, WAV</p>
+                    <button onclick="media_show()" class="btn-outline">Upload Media</button>
+                </div>
+
+                <div class="publishpopupblue" onclick="others_show()">
+                    <h1 class="publishpopuptitle">Upload Others</h1>
+                    <p>PNG, JPEG, PDF, TXT</p>
+                </div>                
+            </div>
+            <button onclick="close_publish()" class="btn-outline" style="margin-top: 15px; text-align: center;">Close</button>
+        </dialog>
+
+
+        <main id="main-content">
             <h1>Dashboard</h1>
+            <h1 class="title">Welcome,</h1>
+            
         </main>
+
+
+        <template id="page-home">
+            <h1>Dashboard</h1>
+            <h1 class="title">Welcome,</h1>
+        </template>
+
+        <template id="page-lr">
+            <h1>Learning Resources</h1>
+            <button class="btn-primary" onclick="publish_show()">Publish</button>
+        </template>
+
+        <template id="page-threads">
+            <h1>Threads</h1>
+        </template>
+        
+        <template id="page-events">
+            <h1>Events</h1>
+        </template>
+        
+
+
+
     </div>
+    <script src="other.js"></script>
 </body>
 </html>
