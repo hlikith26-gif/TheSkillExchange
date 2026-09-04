@@ -20,6 +20,10 @@ def randomize():
 
     Randomization=random.randint(1,13)
 
-    
+def powerer():
+    n1 = document.getElementById("number1")
+    n2 = document.getElementById("number2")
+    r = n1**n2
+    document.getElementById("display").innerText = r
 
 
