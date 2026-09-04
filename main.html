@@ -29,11 +29,15 @@
 
         <dialog id="media-popup">
             <h1>Upload Media</h1>
-            <input type="file" accept=".mp4, .mp3, .mkv, .webm, wav">
+            <input type="file" accept=".mp4, .mp3, .mkv, .webm, .wav">
             <select id="genre">
                 <option value="mathematics">Mathematics</option>
-                <option value="science">Science</option>
-                <option value="sst">Social Studies</option>
+                <option value="phy">Physics</option>
+                <option value="chem">Chemistry</option>
+                <option value="bio">Biology</option>
+                <option value="his">History</option>
+                <option value="geo">Geography</option>
+                <option value="civ">Civics</option>
                 <option value="cs">Computer Science</option>
                 <option value="law">Law</option>
                 <option value="fl">Financial Literacy</option>
@@ -41,16 +45,37 @@
                 <option value="others">Others</option>
             </select>
             <button>Publish</button>
-            <button onclick="publish_show()">Back</button>
+            <button onclick="publish_back()">Back</button>
+            <button onclick="media_close()">Close</button>
+        </dialog>
+
+        <dialog id="of-popup">
+            <h1>Upload Files</h1>
+            <input type="file" accept=".png, .jpg, .pdf, .txt">
+            <select id="genre">
+                <option value="mathematics">Mathematics</option>
+                <option value="phy">Physics</option>
+                <option value="chem">Chemistry</option>
+                <option value="bio">Biology</option>
+                <option value="his">History</option>
+                <option value="geo">Geography</option>
+                <option value="civ">Civics</option>
+                <option value="cs">Computer Science</option>
+                <option value="law">Law</option>
+                <option value="fl">Financial Literacy</option>
+                <option value="languages">Languages</option>
+                <option value="others">Others</option>
+            </select>
+            <button>Publish</button>
+            <button onclick="publish_back()">Back</button>
             <button onclick="media_close()">Close</button>
         </dialog>
 
         <dialog id="publish-popup">
             <div class="publishpopup">
-                <div class="publishpopuppurple">
+                <div class="publishpopuppurple" onclick="media_show()"">
                     <h1 class="publishpopuptitle">Upload Media</h1>
                     <p>MP4, MKV, WebM, MP3, WAV</p>
-                    <button onclick="media_show()" class="btn-outline">Upload Media</button>
                 </div>
 
                 <div class="publishpopupblue" onclick="others_show()">

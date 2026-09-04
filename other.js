@@ -35,11 +35,16 @@ function close_publish() {
     publish_pop.close()
 }
 
-const media_subpop = document.getElementById("media_popup")
+const media_subpop = document.getElementById("media-popup")
 
-function media_close () {
+function publish_back () {
     media_subpop.close()
+    publish_pop.showModal()
 }
 function media_show() {
     media_subpop.showModal()
+    publish_pop.close()
+}
+function media_close() {
+    media_subpop.close()
 }
