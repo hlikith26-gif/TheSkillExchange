@@ -5,7 +5,7 @@
 const SUPABASE_URL = "https://crutagettwacxapnglus.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNydXRhZ2V0dHdhY3hhcG5nbHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg1MzM3MTIsImV4cCI6MjEwNDEwOTcxMn0.-Hz-T-JPzfl1T2CLuQ4_6u16QXdbd9GGpHFGAKqEbh0";
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ---- Sign Up ----
 const signupForm = document.getElementById("signupForm");
@@ -28,7 +28,7 @@ if (signupForm) {
             return;
         }
 
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await supabaseClient.auth.signUp({
             email: email,
             password: password,
             options: {
@@ -63,7 +63,7 @@ if (loginForm) {
             return;
         }
 
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
             email: email,
             password: password
         });
@@ -83,7 +83,7 @@ if (loginForm) {
 const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
     logoutBtn.addEventListener("click", async function () {
-        const { error } = await supabase.auth.signOut();
+        const { error } = await supabaseClient.auth.signOut();
 
         if (error) {
             console.error(error);
@@ -94,3 +94,4 @@ if (logoutBtn) {
         window.location.href = "login.html";
     });
 }
+// above code is AI Generated

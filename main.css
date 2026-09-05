@@ -149,3 +149,27 @@ main {
   margin-bottom: 10px;
   font-family: 'Cormorant Garamond', serif;
 }
+.tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 10px;
+  border-top: solid 1px white;
+  border-left: solid 1px white;
+  font-family: 'Cormorant Garamond', serif;
+}
+.tool {
+  padding: 40px 48px;
+  border-right: solid 1px white;
+  border-bottom: solid 1px white;
+  background-color: var(--obsidian);
+}
+.tool h1 {
+  font-weight: 500;
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+dialog::backdrop {
+  backdrop-filter: blur(8px);
+}
