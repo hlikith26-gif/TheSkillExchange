@@ -2,8 +2,8 @@
 // Requires this in your HTML <head> or before this script:
 // <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-const SUPABASE_URL = "https://YOUR_PROJECT_REF.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://crutagettwacxapnglus.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNydXRhZ2V0dHdhY3hhcG5nbHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg1MzM3MTIsImV4cCI6MjEwNDEwOTcxMn0.-Hz-T-JPzfl1T2CLuQ4_6u16QXdbd9GGpHFGAKqEbh0";
 
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
