@@ -156,3 +156,6 @@ main {
   margin-right: 25px;
   margin-top: 10px;
 }
+dialog::backdrop {
+  backdrop-filter: blur(8px);
+}

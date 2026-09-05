@@ -49,3 +49,16 @@ function media_close() {
     media_subpop.close()
 }
 
+const of_subpop = document.getElementById("of-popup")
+
+function others_show() {
+    of_subpop.showModal()
+    publish_pop.close()
+}
+function publish_back_of() {
+    of_subpop.close()
+    publish_pop.showModal()    
+}
+function of_close() {
+    of_subpop.close()
+}
