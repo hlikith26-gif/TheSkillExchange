@@ -1,5 +1,8 @@
 from pyscript import document
 import random
+import math
+from textblob import TextBlob, Word
+
 def randomize():
     subjects = {    
         "1":"Mathematics",
@@ -25,5 +28,13 @@ def powerer(event):
     pwno = float(document.getElementById("pwno").value)
     r = bsno**pwno
     document.getElementById("pdisplay").innerText = f"Result = {r}"
+
+    x=int(input("enter a number"))
+    math.sqrt(x)
+    print(x)
+
+    y=int(input('enter a number'))
+    math.cbrt(y)
+    print(y)
 
 
