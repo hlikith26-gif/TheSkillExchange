@@ -94,3 +94,4 @@ if (logoutBtn) {
         window.location.href = "login.html";
     });
 }
+// above code is AI Generated
