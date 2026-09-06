@@ -8,12 +8,13 @@
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
 </head>
 <body>
+   
     <div class="container">
     <aside class="sidebar">
         <ul>
             <a href="#" data-page="home"><li>Home</li></a>
             <a href="#" data-page="lr"><li>Learning Resources</li></a>
-            <a href="#" data-page="threads"><li>Threads</li></a>
+            <a href="#" data-page="threads"><li>Forums</li></a>
             <a href="#" data-page="events"><li>Events</li></a>
             <a href="#" data-page="tools"><li>Tools</li></a>
             <button class="btn-primary" onclick="feedback_show()">Feedback</button>
@@ -68,9 +69,19 @@
                 <option value="languages">Languages</option>
                 <option value="others">Others</option>
             </select>
-            <button>Publish</button>
+            <button onclick="test()">Publish</button>
             <button onclick="publish_back_of()">Back</button>
             <button onclick="of_close()">Close</button>
+        </dialog>
+
+        <dialog id="events-popup">
+            <h1>Publish Events</h1>
+            <p>Name Of Event</p>
+            <input id="evname">
+            <p>Details</p>
+            <input style="min-height: 100px;" id="evDesc">
+            <button class="btn-primary" onclick="AddEvent()">Publish</button>
+            <button onclick="events_close()" class="btn-outline">Close</button>
         </dialog>
 
         <dialog id="publish-popup">
@@ -112,6 +123,7 @@
         
         <template id="page-events">
             <h1>Events</h1>
+            <button onclick="events_show()" class="btn-primary">Publish Event</button>
         </template>
         
         <template id="page-tools">
@@ -132,8 +144,8 @@
     </div>
     <script src="other.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
     <script src="dashboard.js"></script>
-    <script src="other.js"></script>
     <py-script src="main.py"></py-script>
 </body>
 </html>

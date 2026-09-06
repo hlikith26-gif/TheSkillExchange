@@ -62,3 +62,12 @@ function publish_back_of() {
 function of_close() {
     of_subpop.close()
 }
+const ev_pop = document.getElementById("events-popup")
+
+function events_show() {
+    ev_pop.showModal()
+
+}
+function events_close() {
+    ev_pop.close()
+}
