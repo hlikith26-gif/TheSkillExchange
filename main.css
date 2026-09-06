@@ -95,14 +95,14 @@ footer {
 }
 
 .sidebar ul li:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(160, 16, 16, 0.08);
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
     transform: translateX(3px);
     color: #00bfff;
 
 }
 .sidebar ul li a:hover {
-  color: #00bfff;
+  color: #ffffff;
 }
 
 /* Main content */

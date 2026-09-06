@@ -8,14 +8,12 @@
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
 </head>
 <body>
-   
     <div class="container">
     <aside class="sidebar">
         <ul>
-            <a href="main.html" data-page="home" class="active"><li>Dashboard</li></a>
+            <a href="main.html" data-page="home"><li>Dashboard</li></a>
             <a href="#" data-page="lr"><li>Learning Resources</li></a>
-            <a href="#" data-page="threads"><li>Forums</li></a>
-            <a href="#" data-page="events"><li>Events</li></a>
+            <a href="forums.html" data-page="threads"><li>Forums</li></a>
             <a href="#" data-page="tools"><li>Tools</li></a>
             <button class="btn-primary" onclick="feedback_show()">Feedback</button>
         </ul>
@@ -69,19 +67,9 @@
                 <option value="languages">Languages</option>
                 <option value="others">Others</option>
             </select>
-            <button onclick="test()">Publish</button>
+            <button>Publish</button>
             <button onclick="publish_back_of()">Back</button>
             <button onclick="of_close()">Close</button>
-        </dialog>
-
-        <dialog id="events-popup">
-            <h1>Publish Events</h1>
-            <p>Name Of Event</p>
-            <input id="evname">
-            <p>Details</p>
-            <input style="min-height: 100px;" id="evDesc">
-            <button class="btn-primary" onclick="AddEvent()">Publish</button>
-            <button onclick="events_close()" class="btn-outline">Close</button>
         </dialog>
 
         <dialog id="publish-popup">
@@ -101,30 +89,17 @@
 
 
         <main id="main-content">
-            <h1>Dashboard</h1>
-            <h1 class="title">Welcome,</h1>
+            <h1>Forums you've joined</h1>
+            <h1 class="title">Share your thoughts:</h1>
             
         </main>
 
-
-        <template id="page-home">
-            <h1>Dashboard</h1>
-            <h1 class="title">Welcome,</h1>
-        </template>
 
         <template id="page-lr">
             <h1>Learning Resources</h1>
             <button class="btn-primary" onclick="publish_show()">Publish</button>
         </template>
 
-        <template id="page-threads">
-            <h1>Threads</h1>
-        </template>
-        
-        <template id="page-events">
-            <h1>Events</h1>
-            <button onclick="events_show()" class="btn-primary">Publish Event</button>
-        </template>
         
         <template id="page-tools">
             <h1>Tools</h1>
@@ -135,17 +110,25 @@
                     <input placeholder="Base Number" id="bsno">
                     <input placeholder="Power" id="pwno">
                     <p id="pdisplay"></p><br>
-                    <button class="btn-primary" py-click="powerer">Calculate</button>
+                    <button class="btn-primary" onclick="powerer()">Calculate</button>
+                    <p>Result: <span id="r">0</span></p>
                 </div>
             </div>
         </template>
-
+    <script>
+             function powerer() {
+            var base = document.getElementById("bsno").value;
+            var power = document.getElementById("pwno").value;
+            var result = Math.pow(Number(base), Number(power));
+            document.getElementById("r").textContent = result;
+        }
+    </script>
 
     </div>
     <script src="other.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="script.js"></script>
     <script src="dashboard.js"></script>
+    <script src="other.js"></script>
     <py-script src="main.py"></py-script>
 </body>
 </html>

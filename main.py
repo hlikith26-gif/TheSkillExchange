@@ -2,6 +2,9 @@ from pyscript import document
 import random
 import math
 from textblob import TextBlob, Word
+
+import math
+from textblob import TextBlob, Word
 def randomize():
     subjects = {    
         "1":"Mathematics",
