@@ -95,3 +95,25 @@ if (logoutBtn) {
     });
 }
 // above code is AI Generated
+// below code is NOT AI Generated
+
+async function AddEvent() {
+    const eventName = document.getElementById("evname").value
+    const desc = document.getElementById("evDesc").value
+
+    if (!eventName || !desc) {
+        alert("All Fields Are Required!")
+        return;
+    }
+    const {data, error} = await supabaseClient
+        .from("events")
+        .insert({
+            name: eventName,
+            description: desc
+        })
+    if (error) {
+        alert(error.message)
+    } else {
+        alert("Published")
+    }
+}
