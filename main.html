@@ -134,13 +134,23 @@
                     <input placeholder="Base Number" id="bsno">
                     <input placeholder="Power" id="pwno">
                     <p id="pdisplay"></p><br>
-                    <button class="btn-primary" py-click="powerer">Calculate</button>
+                    <button class="btn-primary" onclick="powerer()">Calculate</button>
+                    <p>Result: <span id="r">0</span></p>
                 </div>
             </div>
         </template>
+    <script>
+             function powerer() {
+            var base = document.getElementById("bsno").value;
+            var power = document.getElementById("pwno").value;
+            var result = Math.pow(Number(base), Number(power));
+            document.getElementById("r").textContent = result;
+        }
+    </script>
 
 
     </div>
+    <script src="forums.js"></script>
     <script src="other.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
