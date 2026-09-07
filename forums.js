@@ -1,4 +1,4 @@
-
+const supabaseClient = window.supabaseClient;
 async function setupGeneralForum() {
 
     const { data: userData, error: userError } =
