@@ -153,6 +153,16 @@ body {
     margin-left: 50px;
     margin-right: 50px;
 }
+.Whatwedo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1400px;
+    border-left: solid 1px white;
+    border-top: solid 1px white;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
 .purposesblue {
     padding: 40px 48px;
     border-bottom: solid 1px white;
