@@ -69,6 +69,26 @@
     }
   </style>
 </head>
+<script>
+let shauryaPhotoIndex = 0;
+
+const shauryaPhotos = [
+    "WhatsApp Image 2026-09-07 at 9.04.10 PM.jpeg",
+    "meme1.jpeg",
+    "meme2.jpeg"
+];
+
+function changeShauryaPhoto() {
+    shauryaPhotoIndex++;
+
+    if (shauryaPhotoIndex >= shauryaPhotos.length) {
+        shauryaPhotoIndex = 0;
+    }
+
+    document.getElementById("shauryaPhoto").src =
+        shauryaPhotos[shauryaPhotoIndex];
+}
+</script>
 <body>
 
   <header>
@@ -90,11 +110,15 @@
       <p>Contributed to the overall design and implementation of the user interface along with helping build the HTML structure.</p>
     </div>
     <div class="member-card">
-      <img src="WhatsApp Image 2026-09-07 at 9.04.10 PM.jpeg" alt="Member 3">
+      <img id="shauryaPhoto"
+           src="WhatsApp Image 2026-09-07 at 9.04.10 PM.jpeg"
+           alt="Member 3">
       <h2>Shaurya Krishna Arora</h2>
       <p>Backend developer and tools manager</p>
       <p>Handled javascript, python, and helped with database management.</p>
-      <button class="btn-primary">FOR THE MEMES!!!!!</button>
+      <button class="btn-primary" onclick="changeShauryaPhoto()">
+          FOR THE MEMES!!!!!
+      </button>
     </div>
     <div class="member-card">
       <img src="" alt="Member 4">
