@@ -111,7 +111,7 @@ async function loadJoinedForums() {
         card.innerHTML = `
             <h2>${forum.name}</h2>
             <p>${forum.description || "No description yet."}</p>
-            <button class="btn-primary">
+            <button class="btn-primary" onclick="openForum('${forum.id}')">
                 Open Forum
             </button>
         `;
@@ -121,3 +121,29 @@ async function loadJoinedForums() {
 }
 
 loadJoinedForums();
+async function openForum(forumId) {
+
+    const { data, error } = await supabaseClient
+        .from("forums")
+        .select("id, name, description")
+        .eq("id", forumId)
+        .single();
+
+    if (error) {
+        console.error("Could not open forum:", error);
+        return;
+    }
+
+    const container = document.getElementById("joinedForums");
+
+    container.innerHTML = `
+        <div class="forum-card">
+            <h1>${data.name}</h1>
+            <p>${data.description || "No description yet."}</p>
+
+            <button class="btn-primary" onclick="loadJoinedForums()">
+                ← Back to Forums
+            </button>
+        </div>
+    `;
+}
