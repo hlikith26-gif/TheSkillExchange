@@ -122,9 +122,16 @@ main {
     font-size: clamp(52px, 8vw, 100px);
     font-family: 'Cormorant Garamond', serif;
 }
+.subtitle {
+    font-style: italic;
+    font-weight: 50;
+    color: var(--smoke);
+    font-size: clamp(32px, 5vw, 60px);
+    font-family: 'Cormorant Garamond', serif;
+}
 .bluestuff {
     margin: 0;
-    padding: 0;
+    padding: 10px 5px 10px 5px;
     font-style: italic;
     font-weight: 300;
     color: var(--light-blue);
