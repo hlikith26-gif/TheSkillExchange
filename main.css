@@ -183,7 +183,20 @@ dialog::backdrop {
   backdrop-filter: blur(8px);
 }
 .collapse {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+.collapse ul li {
+  min-width: 100%;
   background-color: var(--navy-light);
   border-radius: 8px;
   border: solid 1px white;
+}
+.collapse ul li:hover {
+  background: rgba(160, 16, 16, 0.08);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+  transform: translateX(3px);
+  color: #00bfff;
 }
