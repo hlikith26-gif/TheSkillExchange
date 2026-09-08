@@ -6,6 +6,7 @@ const SUPABASE_URL = "https://crutagettwacxapnglus.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNydXRhZ2V0dHdhY3hhcG5nbHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg1MzM3MTIsImV4cCI6MjEwNDEwOTcxMn0.-Hz-T-JPzfl1T2CLuQ4_6u16QXdbd9GGpHFGAKqEbh0";
 
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+window.supabaseClient = supabaseClient;
 
 // ---- Sign Up ----
 const signupForm = document.getElementById("signupForm");
@@ -116,16 +117,22 @@ async function AddEvent() {
     } else {
         alert("Published")
     }
+    events_close()
+    GetEvents();
 }
-const {data, error} = await supabaseClient
-    .from("events")
-    .select("*")
-if (error) {
-    alert(error.message)
-}
-data.forEach(event => {
-    document.getElementById("evCon").innerHTML +=
-        <ul>
-            <li></li>
-        </ul>
+async function GetEvents() {
+    const {data, error} = await supabaseClient
+        .from("events")
+        .select("*")
+    if (error) {
+        alert(error.message)
+        return;
+    } 
+    document.getElementById("evCon").innerHTML = ""
+    data.forEach(events => {
+        document.getElementById("evCon").innerHTML +=
+        `<h1>${events.name}</h1>
+        <p>${events.description}</p>`
+        ;
 });
+}

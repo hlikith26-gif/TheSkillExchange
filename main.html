@@ -16,7 +16,7 @@
             <a href="#" data-page="lr"><li>Learning Resources</li></a>
             <a href="forums.html" ><li>Forums</li></a>
             <a href="#" data-page="tools"><li>Tools</li></a>
-            <a href="#"><li></li></a>
+            <a href="#" data-page="events" onclick="GetEvents()"><li>Events</li></a>
             <button class="btn-primary" onclick="feedback_show()">Feedback</button>
         </ul>
     </aside>
@@ -123,6 +123,9 @@
         <template id="page-events">
             <h1>Events</h1>
             <button onclick="events_show()" class="btn-primary">Publish Event</button>
+            <div id="evCon">
+
+            </div>
         </template>
         
         <template id="page-tools">
@@ -141,10 +144,10 @@
         </template>
 
     </div>
-    <script src="forums.js"></script>
-    <script src="other.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
-    <script src="dashboard.js"></script>
+    <script src="forums.js"></script>
+    <script src="other.js"></script>
+
 </body>
 </html>
