@@ -182,3 +182,8 @@ main {
 dialog::backdrop {
   backdrop-filter: blur(8px);
 }
+.collapse {
+  background-color: var(--navy-light);
+  border-radius: 8px;
+  border: solid 1px white;
+}
