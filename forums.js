@@ -62,3 +62,62 @@ async function setupGeneralForum() {
     }
 }
 setupGeneralForum();
+async function loadJoinedForums() {
+
+    const { data: userData, error: userError } =
+        await supabaseClient.auth.getUser();
+
+    if (userError || !userData.user) {
+        console.log("No user is logged in.");
+        return;
+    }
+
+    const user = userData.user;
+
+    const { data, error } = await supabaseClient
+        .from("forum_members")
+        .select(`
+            forum_id,
+            forums (
+                id,
+                name,
+                description
+            )
+        `)
+        .eq("user_id", user.id);
+
+    if (error) {
+        console.error("Could not load joined forums:", error);
+        return;
+    }
+
+    const container = document.getElementById("joinedForums");
+
+    container.innerHTML = "";
+
+    if (!data || data.length === 0) {
+        container.innerHTML = "<p>You haven't joined any forums yet.</p>";
+        return;
+    }
+
+    data.forEach(member => {
+
+        const forum = member.forums;
+
+        const card = document.createElement("div");
+
+        card.className = "forum-card";
+
+        card.innerHTML = `
+            <h2>${forum.name}</h2>
+            <p>${forum.description || "No description yet."}</p>
+            <button class="btn-primary">
+                Open Forum
+            </button>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+loadJoinedForums();

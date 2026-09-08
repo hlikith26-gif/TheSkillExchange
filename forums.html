@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="styles.css">
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
 </head>
 <body>
@@ -87,45 +88,45 @@
             <button onclick="close_publish()" class="btn-outline" style="margin-top: 15px; text-align: center;">Close</button>
         </dialog>
 
-
         <main id="main-content">
-            <h1>Forums you've joined</h1>
-            <h1 class="title">Share your </h1>
-            <h4 class="bluestuff">thoughts:</h4>
-            
-        </main>
-        <div class="forums-container">
 
-            <div class="forums-header">
-                <div>
-                    <h1>Forums</h1>
-                    <p>Join discussions, share ideas, and connect with others.</p>
+            <div class="forums-container">
+
+                <div class="forums-header">
+                    <div>
+                        <h1>Forums</h1>
+                        <p>Join discussions, share ideas, and connect with others.</p>
+                    </div>
+
+                    <button id="createForumButton" class="btn-primary">
+                        + Create Forum
+                    </button>
+                </div>
+            </div>  
+
+                <input
+                    class="btn-outline"
+                    type="search"
+                    id="forumSearch"
+                    placeholder="🔍 Search forums..."
+                    >
+
+                <h2>Forums You've Joined</h2>
+
+                <div id="joinedForums" class="forum-grid">
+                    <p>Loading your forums...</p>
                 </div>
 
-                <button id="createForumButton">
-                    + Create Forum
-                </button>
+                <h2>Discover Forums</h2>
+
+                <div id="discoverForums" class="forum-grid">
+                    <p>Loading forums...</p>
+                </div>
+
             </div>
 
-        <input
-            type="search"
-            id="forumSearch"
-            placeholder="🔍 Search forums..."
-
-            <h2>Forums You've Joined</h2>
-
-            <div id="joinedForums">
-                <p>Loading your forums...</p>
-            </div>
-
-            <h2>Discover Forums</h2>
-
-            <div id="discoverForums">
-                <p>Loading forums...</p>
-            </div>
-
-        </div>
-
+        </main>
+        
         <template id="page-lr">
             <h1>Learning Resources</h1>
             <button class="btn-primary" onclick="publish_show()">Publish</button>
@@ -156,10 +157,9 @@
     </script>
 
     </div>
-    <script src="other.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="dashboard.js"></script>
-    <script src="other.js"></script>
+    <script src="script.js"></script>
+    <script src="forums.js"></script>   
     <py-script src="main.py"></py-script>
 </body>
 </html>
