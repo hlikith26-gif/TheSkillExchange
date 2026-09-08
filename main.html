@@ -18,6 +18,7 @@
             <a href="#" data-page="tools"><li>Tools</li></a>
             <a href="#" data-page="events" onclick="GetEvents()"><li>Events</li></a>
             <button class="btn-primary" onclick="feedback_show()">Feedback</button>
+            <button class="btn-logout" onclick="logoutconf()">Log Out</button>
         </ul>
     </aside>
 
@@ -97,6 +98,11 @@
                 </div>                
             </div>
             <button onclick="close_publish()" class="btn-outline" style="margin-top: 15px; text-align: center;">Close</button>
+        </dialog>
+
+        <dialog id="conf-popup">
+            <p>Are you sure you want to log out?</p>
+            <button
         </dialog>
 
         <main id="main-content">

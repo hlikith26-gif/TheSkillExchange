@@ -207,3 +207,24 @@ dialog::backdrop {
   transform: translateX(3px);
   color: #00bfff;
 }
+.btn-logout {
+  background: red;
+  color: var(--navy-dark);
+  padding: 14px 28px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.forum-card {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border-radius: 16px;
+  border: solid 1px white;
+  background-color: black;
+  padding: 20px;
+
+}

@@ -11,13 +11,7 @@
   --navy-deep: #16233B;
   --gold: #C9A86A;
 }
-@font-face {
-    font-family: "anton";
-    src: url(Anton-Regular.ttf) format("truetype");
-    font-weight: normal;
-    font-size: normal;
-    font-display: swap;
-}
+
 * {
   margin: 0;
   padding: 0;
