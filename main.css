@@ -288,3 +288,47 @@ dialog::backdrop {
   border: solid 1px var(--purple);
   padding: 10px; 
 }
+:root {
+    --light-blue: #38BDF8;
+    --purple: #A855F7;
+    --navy-dark: #090D16;
+    --navy-mid: #121A2D;
+    --navy-light: #1E293B;
+    --obsidian: #030509;
+    --cream: #F5EFE0;
+    --smoke: #94A3B8;
+    --navy-deep: #16233B;
+    --gold: #C9A86A;
+}
+
+body.light-mode {
+    --navy-dark: #02ffea;
+    --navy-mid: #FFFFFF;
+    --navy-light: #E2E8F0;
+    --obsidian: #FFFFFF;
+
+    --cream: #111827;
+    --smoke: #475569;
+
+    --navy-deep: #CBD5E1;
+    --gold: #9A6F22;
+
+    --light-blue: #0284C7;
+    --purple: #7C3AED;
+}
+body.light-mode .sidebar {
+    background-color: var(--navy-mid);
+}
+
+body.light-mode .sidebar a {
+    color: var(--cream);
+}
+
+body.light-mode .sidebar a:hover {
+    background-color: var(--navy-light);
+    color: var(--cream);
+}
+
+body.light-mode .sidebar li {
+    color: var(--cream);
+}

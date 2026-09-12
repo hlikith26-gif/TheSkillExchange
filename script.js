@@ -277,3 +277,20 @@ async function getName() {
     document.getElementById("nameDis").innerHTML = user.user_metadata.name
 }
 getName()
+
+
+const themeToggle = document.getElementById("themeToggle");
+
+if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+
+        document.body.classList.toggle("light-mode");
+
+        if (document.body.classList.contains("light-mode")) {
+            themeToggle.textContent = "🌙 Dark Mode";
+        } else {
+            themeToggle.textContent = "☀️ Light Mode";
+        }
+
+    });
+}
