@@ -50,7 +50,7 @@ body {
     linear-gradient(180deg, var(--navy-dark) 0%, var(--navy-mid) 50%, var(--navy-dark) 100%);
 }
 
-/* Content Layout */
+
 .hero-content {
   position: relative;
   z-index: 1;

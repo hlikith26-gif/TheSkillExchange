@@ -189,16 +189,9 @@ async function SaveLR() {
         .storage
         .from("LeRs")
         .upload(filepath, lr)
-    if (upError.message == 'new row violates row-level security policy for table "events"') {
-        alert("You need to login")
-        window.location.href = "login.html";
-        return;
-    
-    } else if (upError) {
+    if (upError) {
         alert(upError.message)
         return;
-    } else {
-        alert("Published")
     }
 
     const {data: urldata} = await supabaseClient
