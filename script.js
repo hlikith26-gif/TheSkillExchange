@@ -270,3 +270,137 @@ async function getName() {
     document.getElementById("nameDis").innerHTML = user.user_metadata.name
 }
 getName()
+
+
+const themeToggle = document.getElementById("themeToggle");
+
+if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+
+        document.body.classList.toggle("light-mode");
+
+        if (document.body.classList.contains("light-mode")) {
+            themeToggle.textContent = "🌙 Dark Mode";
+        } else {
+            themeToggle.textContent = "☀️ Light Mode";
+        }
+
+    });
+}
+async function loadNewForums() {
+
+    const container = document.getElementById("newForums");
+
+    if (!container) return;
+
+    const { data, error } = await supabaseClient
+        .from("forums")
+        .select("id, name, description, created_at")
+        .order("created_at", { ascending: false })
+        .limit(3);
+
+    if (error) {
+        console.error("Could not load new forums:", error);
+        container.innerHTML = "<p>Could not load forums.</p>";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    if (!data || data.length === 0) {
+        container.innerHTML = "<p>No forums have been created yet.</p>";
+        return;
+    }
+
+    data.forEach(forum => {
+
+        const card = document.createElement("div");
+
+        card.className = "dashboard-card";
+
+        card.innerHTML = `
+            <h3>${forum.name}</h3>
+
+            <p>
+                ${forum.description || "No description available."}
+            </p>
+
+            <button
+                class="btn-primary"
+                onclick="openDashboardForum('${forum.id}')"
+            >
+                View Forum
+            </button>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+async function loadNewEvents() {
+
+    const container = document.getElementById("newEvents");
+
+    if (!container) return;
+
+    const { data, error } = await supabaseClient
+        .from("events")
+        .select("*")
+        .limit(3);
+
+    if (error) {
+        console.error("Could not load dashboard events:", error);
+        container.innerHTML = "<p>Could not load events.</p>";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    if (!data || data.length === 0) {
+        container.innerHTML = "<p>No events available.</p>";
+        return;
+    }
+
+    data.forEach(event => {
+
+        const card = document.createElement("div");
+
+        card.className = "dashboard-card";
+
+        card.innerHTML = `
+            <h3>${event.name || "Unnamed Event"}</h3>
+
+            <p>
+                ${event.description || "No description available."}
+            </p>
+
+            <p class="dashboard-date">
+                📅 ${event.doe || "Date not specified"}
+            </p>
+
+            <p class="dashboard-date">
+                📝 Register by: ${event.ldtr || "Not specified"}
+            </p>
+
+            <a
+                href="events.html"
+                class="btn-primary dashboard-button"
+            >
+                View Event
+            </a>
+        `;
+
+        container.appendChild(card);
+    });
+}
+function openDashboardForum(forumId) {
+
+    // Store the forum the user wants to open
+    localStorage.setItem("selectedForum", forumId);
+
+    // Go to the normal forums page
+    window.location.href = "forums.html";
+}
+
+loadNewForums();
+loadNewEvents();
