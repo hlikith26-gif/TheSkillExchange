@@ -136,12 +136,8 @@ async function AddEvent() {
             ldtr: ldate,
             doe: edate
         })
-    if (error.message == 'new row violates row-level security policy for table "events"') {
-        alert("You need to login")
-        window.location.href = "login.html";
-        return;
     
-    } else if (error) {
+    if (error) {
         alert(error.message)
         return;
     } else {
@@ -298,3 +294,4 @@ async function getName() {
     const user = data.user
     document.getElementById("nameDis").innerHTML = user.user_metadata.name
 }
+getName()
