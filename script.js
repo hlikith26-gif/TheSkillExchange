@@ -101,19 +101,34 @@ if (logoutBtn) {
 async function AddEvent() {
     const eventName = document.getElementById("evname").value
     const desc = document.getElementById("evDesc").value
+    const ldate = document.getElementById("Ldate").value
+    const edate = document.getElementById("Edate").value
+    
 
-    if (!eventName || !desc) {
+    if (!eventName || !desc || !ldate || !edate) {
         alert("All Fields Are Required!")
+        return;
+    }
+    if (desc.length > 300) {
+        alert("Description is too long. Max Character limit - 300")
         return;
     }
     const {data, error} = await supabaseClient
         .from("events")
         .insert({
             name: eventName,
-            description: desc
+            description: desc,
+            ldtr: ldate,
+            doe: edate
         })
-    if (error) {
+    if (error.message == 'new row violates row-level security policy for table "events"') {
+        alert("You need to login")
+        window.location.href = "login.html";
+        return;
+    
+    } else if (error) {
         alert(error.message)
+        return;
     } else {
         alert("Published")
     }
@@ -124,15 +139,147 @@ async function GetEvents() {
     const {data, error} = await supabaseClient
         .from("events")
         .select("*")
+        
     if (error) {
         alert(error.message)
         return;
-    } 
+    }
+    
     document.getElementById("evCon").innerHTML = ""
     data.forEach(events => {
         document.getElementById("evCon").innerHTML +=
-        `<h1>${events.name}</h1>
-        <p>${events.description}</p>`
+        `<div class="cardset">
+            <h1>${events.name}</h1>
+            <p>${events.description}</p>
+            <p class="dblue">Last Date To Register: <span>${events.ldtr}</span></p>
+            <p class="dpurple">Date of Event: <span>${events.doe}</span></p>
+        </div>`
         ;
 });
+}
+GetEvents()
+
+supabaseClient
+    .channel("events-realtime")
+    .on(
+        "postgres_changes",
+        {
+            event: "*",
+            schema: "public",
+            table: "events"
+        },
+        () => {
+            GetEvents();
+        }
+    )
+    .subscribe();
+
+
+async function SaveLR() {
+    const LRname = document.getElementById("nameLR").value
+    const lr = document.getElementById("lrfiles").files[0]
+    const subject = document.getElementById("subjectLR").value
+    const desc = document.getElementById("descLR").value
+
+    
+    if (!LRname || !lr || !subject || !desc) {
+        alert("All fields are required!")
+        return;
+    }
+    if (desc.length > 350) {
+        alert("Description is too long. Max Character limit - 350")
+        return;
+    }
+    const safeName = lr.name.replace(/[^a-zA-Z0-9.\-_]/g, "_");
+    const filepath = `${crypto.randomUUID()}-${safeName}`;
+    const {error: upError} = await supabaseClient
+        .storage
+        .from("LeRs")
+        .upload(filepath, lr)
+    if (upError.message == 'new row violates row-level security policy for table "events"') {
+        alert("You need to login")
+        window.location.href = "login.html";
+        return;
+    
+    } else if (upError) {
+        alert(upError.message)
+        return;
+    } else {
+        alert("Published")
+    }
+
+    const {data: urldata} = await supabaseClient
+        .storage
+        .from("LeRs")
+        .getPublicUrl(filepath);
+
+    const {error: xderror} = await supabaseClient
+        .from("learning_resources")
+        .insert({
+            name: LRname,
+            file_url: urldata.publicUrl,
+            subject: subject,
+            desc: desc
+        })
+    if (xderror) {
+        alert(xderror.message)
+        return;
+    } else {
+        alert("Published")
+        close_publish()
+        ShowLR()
+    }
+
+}
+
+// Below code is AI
+
+let allLR = []
+
+async function ShowLR() {
+
+    const {data, error} = await supabaseClient
+        .from("learning_resources")
+        .select("*")
+    if (error) {
+        alert(error.message)
+    }
+
+
+    allLR = data
+
+    RenderLR(allLR)
+}
+ShowLR()
+
+
+function RenderLR(list) {
+    document.getElementById("lrdiv").innerHTML = ""
+
+    list.forEach(lr => {
+        document.getElementById("lrdiv").innerHTML +=
+            `<div class="cardset">
+                <h1>${lr.name}</h1>
+                <p>${lr.desc}</h1><br>
+                <a href="${lr.file_url}" target="_blank"><button class="btn-primary">Download</button></a>
+            </div>`
+           
+    })
+}
+
+function FilterLR() {
+    const query = document.getElementById("lrsearch").value.toLowerCase();
+    const filtered = allLR.filter(lr => lr.name.toLowerCase().includes(query));
+    RenderLR(filtered);
+}
+
+// Below code is NOT AI
+
+async function getName() {
+    const {data, error} = await supabaseClient.auth.getUsers();
+    if (error) {
+        alert(error.message)
+    }
+    const user = data.user
+    document.getElementById("nameDis").innerHTML = user.user_metadata.name
 }

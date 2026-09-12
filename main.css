@@ -15,12 +15,8 @@ body {
   background-color: var(--navy-dark);
   color: var(--cream);
   font-family: 'Outfit', sans-serif;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-  "sidebar main"
-  "sidebar footer";
 }
+
 aside {
   grid-area: sidebar;
 }
@@ -46,7 +42,6 @@ footer {
 }
 .btn-outline {
   background: transparent;
-  color: var(--navy-dark);
   border: 1px solid var(--cream);
   padding: 14px 28px;
   font-size: 11px;
@@ -114,6 +109,8 @@ footer {
 }
 main {
   margin-left: 25px;
+  flex: 1;
+  min-width: 0;
 }
 .title {
     font-style: italic;
@@ -206,4 +203,88 @@ dialog::backdrop {
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
   transform: translateX(3px);
   color: #00bfff;
+}
+.btn-logout {
+  background: red;
+  color: var(--navy-dark);
+  padding: 14px 28px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.forum-card {
+
+  gap: 20px;
+  border-radius: 16px;
+  border: solid 1px white;
+  background-color: black;
+  padding: 20px;
+  margin-bottom: 15px;
+
+}
+.forum-card h2 {
+  margin-bottom: 10px;
+}
+.forum-card p {
+  margin-bottom: 10px;
+}
+.evCon {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.eventsdisplay {
+  border-radius: 16px;
+  border: solid 1px white;
+  background-color: black;
+  padding: 20px;
+  margin: 0;
+  text-wrap: wrap;
+  width: 180px;
+  box-sizing: border-box;
+}
+.lrdiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.cardset {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  border: solid 1px white;
+  background-color: black;
+  padding: 20px;
+  margin: 20px;
+  text-wrap: wrap;
+  width: 250px;
+  height: 442px;
+  box-sizing: border-box;
+}
+.cardset a {
+  margin-top:auto ;
+}
+.forum-grid {
+  margin: 15px;
+}
+.forum-message p {
+  border: solid 1px white;
+  border-radius: 16px;
+  margin-top: 20px;
+  padding: 10px;
+}
+.dblue {
+  border-radius: 16px;
+  border: solid 1px var(--light-blue);
+  padding: 10px;
+}
+.dpurple {
+  border-radius: 16px;
+  border: solid 1px var(--purple);
+  padding: 10px; 
 }

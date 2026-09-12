@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="main.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+   
+    <div class="container">
+    <aside class="sidebar">
+        <ul>
+            <a href="#" data-page="home"><li>Dashboard</li></a>
+            <a href="#" data-page="lr"><li>Learning Resources</li></a>
+            <a href="forums.html" ><li>Forums</li></a>
+            <a href="#" data-page="tools"><li>Tools</li></a>
+            <a href="#" data-page="events"><li>Events</li></a>
+            <button class="btn-primary" onclick="feedback_show()">Feedback</button>
+            <button class="btn-logout" onclick="logoutconf()">Log Out</button>
+        </ul>
+    </aside>
+    <dialog id="events-popup">
+        <h1>Publish Events</h1>
+        <p>Name Of Event</p>
+        <input id="evname">
+        <p>Details</p>
+        <textarea id="evDesc" rows="5" cols="50" placeholder="Include Details like registration link, place of events, etc. Max 300 Characters"></textarea>
+        <p>Last Day To Register</p>
+        <input type="date" id="Ldate">
+        <p>Date Of Event</p>
+        <input type="date" id="Edate">
+        <button class="btn-primary" onclick="AddEvent()">Publish</button>
+        <button onclick="events_close()" class="btn-outline">Close</button>
+    </dialog>
+    <main id="main-content">
+        <h1>Events</h1>
+        <button onclick="events_show()" class="btn-primary">Publish Event</button>
+        <div id="evCon" class="evCon">
+
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+    <script src="forums.js"></script>
+    <script src="other.js"></script>
+</body>
