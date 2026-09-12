@@ -26,14 +26,18 @@
         <p>Name Of Event</p>
         <input id="evname">
         <p>Details</p>
-        <input style="min-height: 100px;" id="evDesc">
+        <textarea id="evDesc" rows="5" cols="50" placeholder="Include Details like registration link, place of events, etc. Max 300 Characters"></textarea>
+        <p>Last Day To Register</p>
+        <input type="date" id="Ldate">
+        <p>Date Of Event</p>
+        <input type="date" id="Edate">
         <button class="btn-primary" onclick="AddEvent()">Publish</button>
         <button onclick="events_close()" class="btn-outline">Close</button>
     </dialog>
     <main id="main-content">
         <h1>Events</h1>
         <button onclick="events_show()" class="btn-primary">Publish Event</button>
-        <div id="evCon">
+        <div id="evCon" class="evCon">
 
         </div>
 

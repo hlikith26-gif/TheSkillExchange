@@ -278,4 +278,13 @@ dialog::backdrop {
   margin-top: 20px;
   padding: 10px;
 }
-
+.dblue {
+  border-radius: 16px;
+  border: solid 1px var(--light-blue);
+  padding: 10px;
+}
+.dpurple {
+  border-radius: 16px;
+  border: solid 1px var(--purple);
+  padding: 10px; 
+}

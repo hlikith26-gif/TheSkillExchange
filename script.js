@@ -101,16 +101,25 @@ if (logoutBtn) {
 async function AddEvent() {
     const eventName = document.getElementById("evname").value
     const desc = document.getElementById("evDesc").value
+    const ldate = document.getElementById("Ldate").value
+    const edate = document.getElementById("Edate").value
+    
 
-    if (!eventName || !desc) {
+    if (!eventName || !desc || !ldate || !edate) {
         alert("All Fields Are Required!")
+        return;
+    }
+    if (desc.length > 300) {
+        alert("Description is too long. Max Character limit - 300")
         return;
     }
     const {data, error} = await supabaseClient
         .from("events")
         .insert({
             name: eventName,
-            description: desc
+            description: desc,
+            ldtr: ldate,
+            doe: edate
         })
     if (error.message == 'new row violates row-level security policy for table "events"') {
         alert("You need to login")
@@ -134,13 +143,16 @@ async function GetEvents() {
     if (error) {
         alert(error.message)
         return;
-    } 
+    }
+    
     document.getElementById("evCon").innerHTML = ""
     data.forEach(events => {
         document.getElementById("evCon").innerHTML +=
         `<div class="cardset">
             <h1>${events.name}</h1>
             <p>${events.description}</p>
+            <p class="dblue">Last Date To Register: <span>${events.ldtr}</span></p>
+            <p class="dpurple">Date of Event: <span>${events.doe}</span></p>
         </div>`
         ;
 });
@@ -184,9 +196,16 @@ async function SaveLR() {
         .storage
         .from("LeRs")
         .upload(filepath, lr)
-    if (upError) {
+    if (upError.message == 'new row violates row-level security policy for table "events"') {
+        alert("You need to login")
+        window.location.href = "login.html";
+        return;
+    
+    } else if (upError) {
         alert(upError.message)
         return;
+    } else {
+        alert("Published")
     }
 
     const {data: urldata} = await supabaseClient
@@ -211,7 +230,12 @@ async function SaveLR() {
         ShowLR()
     }
 
-}  
+}
+
+// Below code is AI
+
+let allLR = []
+
 async function ShowLR() {
 
     const {data, error} = await supabaseClient
@@ -221,19 +245,35 @@ async function ShowLR() {
         alert(error.message)
     }
 
+
+    allLR = data
+
+    RenderLR(allLR)
+}
+ShowLR()
+
+
+function RenderLR(list) {
     document.getElementById("lrdiv").innerHTML = ""
 
-    data.forEach(lr => {
+    list.forEach(lr => {
         document.getElementById("lrdiv").innerHTML +=
             `<div class="cardset">
                 <h1>${lr.name}</h1>
                 <p>${lr.desc}</h1><br>
                 <a href="${lr.file_url}" target="_blank"><button class="btn-primary">Download</button></a>
             </div>`
-            
+           
     })
 }
-ShowLR()
+
+function FilterLR() {
+    const query = document.getElementById("lrsearch").value.toLowerCase();
+    const filtered = allLR.filter(lr => lr.name.toLowerCase().includes(query));
+    RenderLR(filtered);
+}
+
+// Below code is NOT AI
 
 async function getName() {
     const {data, error} = await supabaseClient.auth.getUsers();
