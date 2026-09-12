@@ -12,10 +12,10 @@
     <div class="container">
     <aside class="sidebar">
         <ul>
-            <a href="#" data-page="home"><li>Dashboard</li></a>
-            <a href="#" data-page="lr"><li>Learning Resources</li></a>
+            <a href="main.html"><li>Dashboard</li></a>
+            <a href="lr.html"><li>Learning Resources</li></a>
             <a href="forums.html" ><li>Forums</li></a>
-            <a href="#" data-page="tools"><li>Tools</li></a>
+            <a href="main.html"><li>Tools</li></a>
             <a href="events.html"><li>Events</li></a>
             <button class="btn-primary" onclick="feedback_show()">Feedback</button>
             <button class="btn-logout" onclick="logoutconf()">Log Out</button>
@@ -32,21 +32,23 @@
         <dialog id="publish-popup">
             <h1>Upload Media</h1>
             <input type="file" accept=".mp4, .mp3, .mkv, .webm, .wav, .png, .jpg, .pdf, .txt" id="lrfiles">
-            <input id="nameLR">
+            <input id="nameLR" placeholder="Enter name">
+            
             <select id="subjectLR">
-                <option value="mathematics">Mathematics</option>
-                <option value="phy">Physics</option>
-                <option value="chem">Chemistry</option>
-                <option value="bio">Biology</option>
-                <option value="his">History</option>
-                <option value="geo">Geography</option>
-                <option value="civ">Civics</option>
-                <option value="cs">Computer Science</option>
-                <option value="law">Law</option>
-                <option value="fl">Financial Literacy</option>
-                <option value="languages">Languages</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Biology">Biology</option>
+                <option value="History">History</option>
+                <option value="Geography">Geography</option>
+                <option value="Civics">Civics</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Law">Law</option>
+                <option value="FL">Financial Literacy</option>
+                <option value="Languages">Languages</option>
                 <option value="others">Others</option>
-            </select>
+            </select><br>
+            <textarea id="descLR" rows="5" cols="50" placeholder="Enter Description (Max 350 Characters)" maxlength="380"></textarea>
             <button onclick="SaveLR()">Publish</button>
             <button onclick="close_publish()">Close</button>
         </dialog>
@@ -55,8 +57,8 @@
         <main>
             <h1>Learning Resources</h1>
             <button class="btn-primary" onclick="publish_show()">Publish</button>
-            <div id="lrdiv">
-                
+            <div id="lrdiv" class="lrdiv">
+
             </div>
         </main>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

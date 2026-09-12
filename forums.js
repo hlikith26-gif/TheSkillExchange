@@ -410,7 +410,7 @@ async function openForum(forumId) {
 
         <div class="forum-card">
 
-            <button
+            <button style="color: white;"
                 class="btn-outline"
                 onclick="backToForums()"
             >

@@ -112,8 +112,14 @@ async function AddEvent() {
             name: eventName,
             description: desc
         })
-    if (error) {
+    if (error.message == 'new row violates row-level security policy for table "events"') {
+        alert("You need to login")
+        window.location.href = "login.html";
+        return;
+    
+    } else if (error) {
         alert(error.message)
+        return;
     } else {
         alert("Published")
     }
@@ -132,7 +138,7 @@ async function GetEvents() {
     document.getElementById("evCon").innerHTML = ""
     data.forEach(events => {
         document.getElementById("evCon").innerHTML +=
-        `<div class="eventsdisplay">
+        `<div class="cardset">
             <h1>${events.name}</h1>
             <p>${events.description}</p>
         </div>`
@@ -161,10 +167,15 @@ async function SaveLR() {
     const LRname = document.getElementById("nameLR").value
     const lr = document.getElementById("lrfiles").files[0]
     const subject = document.getElementById("subjectLR").value
+    const desc = document.getElementById("descLR").value
 
     
-    if (!LRname || !lr || !subject) {
+    if (!LRname || !lr || !subject || !desc) {
         alert("All fields are required!")
+        return;
+    }
+    if (desc.length > 350) {
+        alert("Description is too long. Max Character limit - 350")
         return;
     }
     const safeName = lr.name.replace(/[^a-zA-Z0-9.\-_]/g, "_");
@@ -182,12 +193,14 @@ async function SaveLR() {
         .storage
         .from("LeRs")
         .getPublicUrl(filepath);
+
     const {error: xderror} = await supabaseClient
         .from("learning_resources")
         .insert({
             name: LRname,
             file_url: urldata.publicUrl,
-            subject: subject
+            subject: subject,
+            desc: desc
         })
     if (xderror) {
         alert(xderror.message)
@@ -198,23 +211,35 @@ async function SaveLR() {
         ShowLR()
     }
 
-
 }  
 async function ShowLR() {
 
     const {data, error} = await supabaseClient
         .from("learning_resources")
         .select("*")
+    if (error) {
+        alert(error.message)
+    }
 
     document.getElementById("lrdiv").innerHTML = ""
 
     data.forEach(lr => {
         document.getElementById("lrdiv").innerHTML +=
-            `<div id="lrcon>
+            `<div class="cardset">
                 <h1>${lr.name}</h1>
-                <a href${lr.file_url}><button class="btn-primary">Download</button></a>
+                <p>${lr.desc}</h1><br>
+                <a href="${lr.file_url}" target="_blank"><button class="btn-primary">Download</button></a>
             </div>`
             
     })
 }
 ShowLR()
+
+async function getName() {
+    const {data, error} = await supabaseClient.auth.getUsers();
+    if (error) {
+        alert(error.message)
+    }
+    const user = data.user
+    document.getElementById("nameDis").innerHTML = user.user_metadata.name
+}
