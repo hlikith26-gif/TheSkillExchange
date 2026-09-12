@@ -22,81 +22,6 @@
         </ul>
     </aside>
 
-        <dialog id="feedback-popup" style="border-radius: 16px;">
-            <h1>Feedback</h1>
-            <p>We value your feedback! Please share your thoughts, suggestions, or any issues you encountered while using our platform. Your input helps us improve and provide a better experience for all users.</p>
-            <p>To reach out to us, please email us at theskillexchange.feedback1314@gmail.com</p>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=theskillexchange.feedback1314@gmail.com " target="_blank"><button class="btn-primary">Email Us</button></a>
-        </dialog>
-
-        <dialog id="media-popup">
-            <h1>Upload Media</h1>
-            <input type="file" accept=".mp4, .mp3, .mkv, .webm, .wav">
-            <select id="genre">
-                <option value="mathematics">Mathematics</option>
-                <option value="phy">Physics</option>
-                <option value="chem">Chemistry</option>
-                <option value="bio">Biology</option>
-                <option value="his">History</option>
-                <option value="geo">Geography</option>
-                <option value="civ">Civics</option>
-                <option value="cs">Computer Science</option>
-                <option value="law">Law</option>
-                <option value="fl">Financial Literacy</option>
-                <option value="languages">Languages</option>
-                <option value="others">Others</option>
-            </select>
-            <button>Publish</button>
-            <button onclick="publish_back()">Back</button>
-            <button onclick="media_close()">Close</button>
-        </dialog>
-
-        <dialog id="of-popup">
-            <h1>Upload Files</h1>
-            <input type="file" accept=".png, .jpg, .pdf, .txt">
-            <select id="genre">
-                <option value="mathematics">Mathematics</option>
-                <option value="phy">Physics</option>
-                <option value="chem">Chemistry</option>
-                <option value="bio">Biology</option>
-                <option value="his">History</option>
-                <option value="geo">Geography</option>
-                <option value="civ">Civics</option>
-                <option value="cs">Computer Science</option>
-                <option value="law">Law</option>
-                <option value="fl">Financial Literacy</option>
-                <option value="languages">Languages</option>
-                <option value="others">Others</option>
-            </select>
-            <button onclick="test()">Publish</button>
-            <button onclick="publish_back_of()">Back</button>
-            <button onclick="of_close()">Close</button>
-        </dialog>
-
-        <dialog id="events-popup">
-            <h1>Publish Events</h1>
-            <p>Name Of Event</p>
-            <input id="evname">
-            <p>Details</p>
-            <input style="min-height: 100px;" id="evDesc">
-            <button class="btn-primary" onclick="AddEvent()">Publish</button>
-            <button onclick="events_close()" class="btn-outline">Close</button>
-        </dialog>
-
-        <dialog id="publish-popup">
-            <div class="publishpopup">
-                <div class="publishpopuppurple" onclick="media_show()">
-                    <h1 class="publishpopuptitle">Upload Media</h1>
-                    <p>MP4, MKV, WebM, MP3, WAV</p>
-                </div>
-
-                <div class="publishpopupblue" onclick="others_show()">
-                    <h1 class="publishpopuptitle">Upload Others</h1>
-                    <p>PNG, JPEG, PDF, TXT</p>
-                </div>                
-            </div>
-            <button onclick="close_publish()" class="btn-outline" style="margin-top: 15px; text-align: center;">Close</button>
-        </dialog>
 
         <dialog id="conf-popup">
             <p>Are you sure you want to log out?</p>
@@ -111,24 +36,7 @@
         </main>
 
 
-        <template id="page-home">
-            <h1>Dashboard</h1>
-            <h1 class="title">Welcome,</h1>
-        </template>
 
-        <template id="page-lr">
-            <h1>Learning Resources</h1>
-            <button class="btn-primary" onclick="publish_show()">Publish</button>
-        </template>
-
-        
-        <template id="page-events">
-            <h1>Events</h1>
-            <button onclick="events_show()" class="btn-primary">Publish Event</button>
-            <div id="evCon">
-
-            </div>
-        </template>
         
         <template id="page-tools">
             <h1>Tools</h1>
