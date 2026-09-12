@@ -1,6 +1,4 @@
-// ---- Supabase setup ----
-// Requires this in your HTML <head> or before this script:
-// <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 const SUPABASE_URL = "https://crutagettwacxapnglus.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNydXRhZ2V0dHdhY3hhcG5nbHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg1MzM3MTIsImV4cCI6MjEwNDEwOTcxMn0.-Hz-T-JPzfl1T2CLuQ4_6u16QXdbd9GGpHFGAKqEbh0";
@@ -8,7 +6,24 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 window.supabaseClient = supabaseClient;
 
-// ---- Sign Up ----
+let username = "";
+
+async function getUsername() {
+    const { data, error } = await supabaseClient.auth.getUser();
+
+    if (error || !data.user) {
+        console.log("No user logged in");
+        return;
+    }
+
+    username = data.user.user_metadata.name;
+
+    console.log(username);
+}
+
+getUsername();
+
+
 const signupForm = document.getElementById("signupForm");
 if (signupForm) {
     signupForm.addEventListener("submit", async function (event) {
@@ -33,7 +48,7 @@ if (signupForm) {
             email: email,
             password: password,
             options: {
-                data: { name: name } // stored in user_metadata
+                data: { name: name } 
             }
         });
 
@@ -50,7 +65,7 @@ if (signupForm) {
     });
 }
 
-// ---- Sign In ----
+
 const loginForm = document.getElementById("loginForm");
 if (loginForm) {
     loginForm.addEventListener("submit", async function (event) {
@@ -80,7 +95,7 @@ if (loginForm) {
     });
 }
 
-// ---- Log Out ----
+
 const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
     logoutBtn.addEventListener("click", async function () {
