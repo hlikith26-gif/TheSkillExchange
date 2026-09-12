@@ -6,24 +6,6 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 window.supabaseClient = supabaseClient;
 
-let username = "";
-
-async function getUsername() {
-    const { data, error } = await supabaseClient.auth.getUser();
-
-    if (error || !data.user) {
-        console.log("No user logged in");
-        return;
-    }
-
-    username = data.user.user_metadata.name;
-
-    console.log(username);
-}
-
-getUsername();
-
-
 const signupForm = document.getElementById("signupForm");
 if (signupForm) {
     signupForm.addEventListener("submit", async function (event) {
