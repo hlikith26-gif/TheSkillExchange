@@ -2,25 +2,7 @@ from pyscript import document
 import random
 import math
 
-def randomize():
-    subjects = {    
-        "1":"Mathematics",
-        "2":"Physics",
-        "3":"Chemistry",
-        "4":"Biology",
-        "5":"History",
-        "6":"Political Sciences",
-        "7":"Geography",
-        "8":"Law",
-        "9":"Computer Science",
-        "10":"Financial Literacy",
-        "11":"Indian Languages",
-        "12":"Foreign Languages",
-        "13":"others"
-    }
 
-
-    Randomization=random.randint(1,13)
 
 def powerer(event):
     bsno = float(document.getElementById("bsno").value)
@@ -28,5 +10,11 @@ def powerer(event):
     r = bsno**pwno
     document.getElementById("pdisplay").innerText = f"Result = {r}"
 
-
-    
+def sqroot(event):
+    nsq1 = float(document.getElementById("nsq1").value)
+    re = math.sqrt(nsq1)
+    document.getElementById("sqdisplay").innerText = f"Result = {re}"
+def curoot(event):
+    ncu1 = float(document.getElementById("ncu1").value)
+    re = math.cbrt(ncu1)
+    document.getElementById("cudisplay").innerText = f"Result = {re}"

@@ -29,13 +29,35 @@
             <button id="logoutBtn" class="btn-logout">Yes</button>
         </dialog>
 
-        <main id="main-content">
-            <h1>Dashboard</h1>
-            <h1 class="title" >Welcome,</h1>
-            <p id="nameDis"></p>
-        </main>
 
-    
+
+        
+        <main id="page-tools">
+            <h1>Tools</h1>
+            <div class="tools">
+                <div class="tool">
+                    <h1>Powerer</h1>
+                    <i style="margin-bottom: 15px;">Raise any number to any power: </i><br>
+                    <input placeholder="Base Number" id="bsno">
+                    <input placeholder="Power" id="pwno">
+                    <p id="pdisplay"></p><br>
+                    <button class="btn-primary" py-click="powerer">Calculate</button>
+
+                </div>
+                <div class="tool">
+                    <h1>Square Root</h1>
+                    <input placeholder="Enter Number" id="nsq1">
+                    <p id="sqdisplay"></p>
+                    <button class="btn-primary" py-click="sqroot">Calculate</button>
+                </div>
+                <div class="tool">
+                    <h1>Cube Root</h1>
+                    <input placeholder="Enter Number" id="ncu1">
+                    <p id="cudisplay"></p>
+                    <button class="btn-primary" py-click="curoot">Calculate</button>
+                </div>
+            </div>
+        </template>
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
