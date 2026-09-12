@@ -228,3 +228,19 @@ dialog::backdrop {
   padding: 20px;
 
 }
+.evCon {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.eventsdisplay {
+  border-radius: 16px;
+  border: solid 1px white;
+  background-color: black;
+  padding: 20px;
+  margin: 0;
+  text-wrap: wrap;
+  width: 180px;
+  box-sizing: border-box;
+}

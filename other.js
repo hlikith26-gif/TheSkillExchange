@@ -71,3 +71,12 @@ function events_show() {
 function events_close() {
     ev_pop.close()
 }
+
+const logoutconf_pop = document.getElementById("conf-popup") 
+
+function logoutconf() {
+    logoutconf_pop.showModal()
+}
+function conf_close() {
+    logoutconf_pop.close()
+}

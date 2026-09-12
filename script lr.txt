@@ -206,10 +206,10 @@ async function ShowLR() {
         .from("learning_resources")
         .select("*")
 
-    document.getElementById("lrdiv").innerHTML = ""
+    document.getElementById("lrdiv") = ""
 
     data.forEach(lr => {
-        document.getElementById("lrdiv").innerHTML +=
+        document.getElementById("lrdiv") +=
             `<div id="lrcon>
                 <h1>${lr.name}</h1>
                 <a href${lr.file_url}><button class="btn-primary">Download</button></a>

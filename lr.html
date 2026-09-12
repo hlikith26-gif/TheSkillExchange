@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="main.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+   
+    <div class="container">
+    <aside class="sidebar">
+        <ul>
+            <a href="#" data-page="home"><li>Dashboard</li></a>
+            <a href="#" data-page="lr"><li>Learning Resources</li></a>
+            <a href="forums.html" ><li>Forums</li></a>
+            <a href="#" data-page="tools"><li>Tools</li></a>
+            <a href="events.html"><li>Events</li></a>
+            <button class="btn-primary" onclick="feedback_show()">Feedback</button>
+            <button class="btn-logout" onclick="logoutconf()">Log Out</button>
+        </ul>
+    </aside>
+
+        <dialog id="feedback-popup" style="border-radius: 16px;">
+            <h1>Feedback</h1>
+            <p>We value your feedback! Please share your thoughts, suggestions, or any issues you encountered while using our platform. Your input helps us improve and provide a better experience for all users.</p>
+            <p>To reach out to us, please email us at theskillexchange.feedback1314@gmail.com</p>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=theskillexchange.feedback1314@gmail.com " target="_blank"><button class="btn-primary">Email Us</button></a>
+        </dialog>
+
+        <dialog id="publish-popup">
+            <h1>Upload Media</h1>
+            <input type="file" accept=".mp4, .mp3, .mkv, .webm, .wav, .png, .jpg, .pdf, .txt" id="lrfiles">
+            <input id="nameLR">
+            <select id="subjectLR">
+                <option value="mathematics">Mathematics</option>
+                <option value="phy">Physics</option>
+                <option value="chem">Chemistry</option>
+                <option value="bio">Biology</option>
+                <option value="his">History</option>
+                <option value="geo">Geography</option>
+                <option value="civ">Civics</option>
+                <option value="cs">Computer Science</option>
+                <option value="law">Law</option>
+                <option value="fl">Financial Literacy</option>
+                <option value="languages">Languages</option>
+                <option value="others">Others</option>
+            </select>
+            <button onclick="SaveLR()">Publish</button>
+            <button onclick="close_publish()">Close</button>
+        </dialog>
+
+
+        <main>
+            <h1>Learning Resources</h1>
+            <button class="btn-primary" onclick="publish_show()">Publish</button>
+            <div id="lrdiv">
+                
+            </div>
+        </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+    <script src="forums.js"></script>
+    <script src="other.js"></script>
+</body>
