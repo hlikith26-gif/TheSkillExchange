@@ -301,7 +301,7 @@ dialog::backdrop {
 }
 
 body.light-mode {
-    --navy-dark: #02ffea;
+    --navy-dark: #b1b1b15e;
     --navy-mid: #FFFFFF;
     --navy-light: #E2E8F0;
     --obsidian: #FFFFFF;
